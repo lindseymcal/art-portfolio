@@ -60,12 +60,12 @@ html, body {
 
 .navbar a.active {
   color: #BF8C60;
-  border-bottom: 2px solid #BF8C60;
+  /* border-bottom: 2px solid #BF8C60; */
 }
 
 h1, h2 {
   color: #466273;
-  margin-bottom: 0.5em;
+  /* margin-bottom: 0.5em; */
   font-weight: 400;
   font-family: 'Courier New', Courier, monospace;
 }
@@ -354,7 +354,7 @@ img {
 .about h1 {
   margin: 0;
   position: sticky;
-  top: 4.2rem;
+  top: 3rem;
   background: #466273;
   padding: 1rem 2rem;
   z-index: 100;
