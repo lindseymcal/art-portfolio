@@ -339,7 +339,7 @@ img {
 
 .about {
   margin-top: 4.2rem;
-  padding: 1rem;
+  padding: 2rem;
   box-sizing: border-box;
   text-align: left;
   width: 100%;
@@ -356,29 +356,26 @@ img {
   position: sticky;
   top: 4.2rem;
   background: #466273;
-  padding: 0.75rem 1rem;
+  padding: 1rem 2rem;
   z-index: 100;
   color: white;
-  height: 3.5rem;
+  height: 4rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-size: 1.5rem;
 }
 
 .about h2 {
   color: #CEE1F2;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 500;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
   font-family: 'Courier New', Courier, monospace;
 }
 
 .about p {
   color: white;
-  line-height: 1.6;
-  margin-bottom: 1rem;
 }
 
 .about a {
@@ -391,27 +388,24 @@ img {
 
 .about-image {
   width: 100%;
-  max-width: 300px;
+  max-width: 400px;
   height: auto;
   margin-bottom: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  align-self: center;
 }
 
 .about-content {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
   align-items: flex-start;
   overflow: visible;
   flex-grow: 1;
-  padding: 0 0.5rem;
 }
 
 .about-text {
   flex: 1;
-  width: 100%;
 }
 
 .about-text p:last-child {
@@ -422,54 +416,13 @@ img {
   margin-bottom: 0.5em;
 }
 
-.about-section {
-  margin-top: 2rem;
-  padding: 1rem 0.5rem;
-  text-align: center;
-}
-
-.about-section p {
-  color: #CEE1F2;
-  font-size: 0.9rem;
-  margin: 0;
-}
-
 @media (min-width: 768px) {
-  .about {
-    padding: 2rem;
-  }
-  
-  .about h1 {
-    padding: 1rem 2rem;
-    height: 4rem;
-    font-size: 2rem;
-  }
-  
-  .about h2 {
-    font-size: 1.5rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-  
   .about-content {
     flex-direction: row;
-    gap: 2rem;
-    padding: 0;
   }
-
   .about-image {
-    max-width: 400px;
     margin-right: 2rem;
     margin-bottom: 0;
-    align-self: flex-start;
-  }
-  
-  .about-section {
-    padding: 1rem 0;
-  }
-  
-  .about-section p {
-    font-size: 1rem;
   }
 }
 
