@@ -337,24 +337,25 @@ img {
   font-family: 'Courier New', Courier, monospace;
 }
 
+
 .about {
-  margin-top: 4.2rem;
-  padding: 2rem;
+  margin-top: 10rem;
+  padding: 0;
   box-sizing: border-box;
   text-align: left;
   width: 100%;
+  min-height: calc(100vh - 4.2rem);
   position: relative;
   background: #466273;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 4.2rem);
-  flex-grow: 1;
+  align-items: stretch;
 }
 
 .about h1 {
   margin: 0;
   position: sticky;
-  top: 3rem;
+  top: 4.2rem;
   background: #466273;
   padding: 1rem 2rem;
   z-index: 100;
@@ -363,6 +364,17 @@ img {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  /* margin: 0;
+  position: sticky;
+  top: 4rem;
+  background: #466273;
+  padding: 1rem 0rem;
+  z-index: 100;
+  color: white;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; */
 }
 
 .about h2 {
@@ -391,7 +403,7 @@ img {
   max-width: 400px;
   height: auto;
   margin-bottom: 1.5rem;
-  border-radius: 12px;
+  /* border-radius: 12px; */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -414,6 +426,25 @@ img {
 
 .about-text h2 {
   margin-bottom: 0.5em;
+}
+
+/* from google ai */
+.container {
+    display: flex; /* Makes the child elements (columns) display side by side */
+    max-width: 960px; /* Optional: Sets a maximum width for the content area */
+    margin: 20px auto; /* Centers the container and adds some vertical space */
+    padding: 0 20px;
+    gap: 20px; /* Adds space between columns */
+    flex-wrap: wrap; /* Allows columns to wrap to a single column on smaller screens */
+}
+
+.column {
+    flex: 1; /* Allows columns to grow and shrink proportionally */
+    /* background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
+    min-width: 300px; /* Prevents columns from becoming too narrow */
 }
 
 @media (min-width: 768px) {
