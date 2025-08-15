@@ -1,4 +1,4 @@
-import { Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom'
+import { Routes, Route, Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 // Import lead images
@@ -14,7 +14,6 @@ const abstractImages = import.meta.glob('./assets/abstract/*.jpeg', { eager: tru
 function Collection({ name }) {
   const [images, setImages] = useState([])
   const navigate = useNavigate()
-  const location = useLocation()
 
   useEffect(() => {
     let imageSet
@@ -98,31 +97,36 @@ function Gallery() {
   ]
 
   return (
-    <div className="gallery">
-      <h1>Gallery</h1>
-      <Routes>
-        <Route path="/" element={
-          <div className="gallery-categories">
-            {categories.map((category) => (
-              <Link 
-                key={category.name} 
-                to={category.name.toLowerCase()} 
-                className="category-card"
-              >
-                <img 
-                  src={category.image} 
-                  alt={category.name} 
-                  className="category-image"
-                />
-                <h2>{category.name}</h2>
-              </Link>
-            ))}
-          </div>
-        } />
-        <Route path="abstract" element={<Collection name="Abstract" />} />
-        <Route path="landscapes" element={<Collection name="Landscapes" />} />
-        <Route path="studies" element={<Collection name="Studies" />} />
-      </Routes>
+    <div className="gallery-page">
+      <header className="gallery-header">
+        <h1>Gallery</h1>
+      </header>
+      
+      <main className="gallery-main">
+        <Routes>
+          <Route path="/" element={
+            <div className="gallery-categories">
+              {categories.map((category) => (
+                <Link 
+                  key={category.name} 
+                  to={category.name.toLowerCase()} 
+                  className="category-card"
+                >
+                  <img 
+                    src={category.image} 
+                    alt={category.name} 
+                    className="category-image"
+                  />
+                  <h2>{category.name}</h2>
+                </Link>
+              ))}
+            </div>
+          } />
+          <Route path="abstract" element={<Collection name="Abstract" />} />
+          <Route path="landscapes" element={<Collection name="Landscapes" />} />
+          <Route path="studies" element={<Collection name="Studies" />} />
+        </Routes>
+      </main>
     </div>
   )
 }
