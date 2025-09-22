@@ -26,35 +26,37 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background: var(--primary-bg);
   scroll-behavior: smooth;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 #root {
   margin: 0;
   padding: 0;
   width: 100%;
-  max-width: none;
-  min-height: 100vh;
+  height: 100vh;
   background: var(--primary-bg);
+  display: grid;
+  grid-template-rows: var(--navbar-height) 1fr;
+  grid-template-areas: 
+    "navbar"
+    "content";
 }
 
 .navbar {
+  grid-area: navbar;
   background: var(--secondary-bg);
   color: var(--text-light);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
   z-index: 1000;
   padding: var(--navbar-padding-top) 0 var(--navbar-padding-bottom) 0;
   border-bottom: 1px solid var(--border-color);
   margin: 0;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
 }
 
 .navbar ul {
@@ -88,6 +90,16 @@ html, body {
 .navbar a.active {
   color: var(--accent-color);
   border-bottom: 2px solid var(--accent-color);
+}
+
+.main-content {
+  grid-area: content;
+  display: grid;
+  grid-template-rows: var(--header-height) 1fr;
+  grid-template-areas:
+    "header"
+    "main";
+  overflow-y: auto;
 }
 
 h1, h2 {
@@ -142,23 +154,41 @@ h1, h2 {
 
 .gallery-categories {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-xl);
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Desktop: Show cards in a row when there's enough space */
+@media (min-width: 768px) {
+  .gallery-categories {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+    padding: 0;
+  }
 }
 
 .category-card {
   text-align: center;
   background: transparent;
   border-radius: 8px;
-  padding: var(--spacing-lg);
+  padding: var(--spacing-md);
   transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
   cursor: pointer;
   text-decoration: none;
   color: white;
+  max-width: 100%;
+}
+
+/* Desktop: More padding for cards */
+@media (min-width: 768px) {
+  .category-card {
+    padding: var(--spacing-lg);
+  }
 }
 
 .category-card:hover {
@@ -196,7 +226,7 @@ h1, h2 {
   overflow-y: auto;
   flex: 1;
   height: calc(100vh - var(--navbar-height));
-  padding-top: calc(var(--navbar-height) + var(--spacing-lg));
+  padding-top: var(--spacing-lg);
 }
 
 .collection-header {
@@ -380,7 +410,7 @@ h1, h2 {
 /* ===== NEW ABOUT PAGE STYLES ===== */
 .about-page {
   background: var(--secondary-bg);
-  min-height: 100vh;
+  min-height: calc(100vh - var(--navbar-height));
   display: flex;
   flex-direction: column;
 }
@@ -388,22 +418,18 @@ h1, h2 {
 /* ===== NEW GALLERY PAGE STYLES ===== */
 .gallery-page {
   background: var(--secondary-bg);
-  min-height: 100vh;
+  min-height: calc(100vh - var(--navbar-height));
   display: flex;
   flex-direction: column;
 }
 
 .gallery-header {
+  grid-area: header;
   background: var(--secondary-bg);
-  position: sticky;
-  top: var(--navbar-height);
-  z-index: 100;
-  height: var(--header-height) !important;
-  min-height: var(--header-height) !important;
+  z-index: 999;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  flex-shrink: 0;
   padding: var(--spacing-md) var(--spacing-lg);
 }
 
@@ -415,11 +441,12 @@ h1, h2 {
 }
 
 .gallery-main {
-  flex: 1;
+  grid-area: main;
   padding: var(--spacing-lg);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-y: auto;
 }
 
 /* Hide gallery header when viewing collections */
@@ -434,16 +461,12 @@ h1, h2 {
 }
 
 .about-header {
+  grid-area: header;
   background: var(--secondary-bg);
-  position: sticky;
-  top: var(--navbar-height);
-  z-index: 100;
-  height: var(--header-height) !important;
-  min-height: var(--header-height) !important;
+  z-index: 999;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  flex-shrink: 0;
   padding: var(--spacing-md) var(--spacing-lg);
 }
 
@@ -455,11 +478,12 @@ h1, h2 {
 }
 
 .about-main {
-  flex: 1;
+  grid-area: main;
   padding: var(--spacing-lg);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  overflow-y: auto;
 }
 
 .about-content {
@@ -468,6 +492,8 @@ h1, h2 {
   gap: var(--spacing-lg);
   max-width: 960px;
   margin: 0 auto;
+  width: 100%;
+  min-height: 0;
 }
 
 .about-photo {
@@ -547,9 +573,8 @@ h1, h2 {
   margin-top: 0 !important;
   min-height: 100vh;
   padding-top: 0 !important;
-  overflow-x: auto;
+  overflow-x: hidden;
   position: relative;
-  overflow-y: auto;
   box-sizing: border-box;
   width: 100%;
   display: inline-block;
@@ -580,17 +605,4 @@ h1, h2 {
 }
 
 /* ===== HEADER STYLING ===== */
-.gallery h1, .about h1 {
-  position: sticky;
-  top: var(--navbar-height);
-  background: var(--secondary-bg);
-  z-index: 100;
-  margin: 0 !important;
-  padding: var(--spacing-md) var(--spacing-lg);
-  height: var(--header-height);
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  color: white;
-  box-sizing: border-box;
-}
+/* Removed conflicting .gallery h1, .about h1 rule - we use .gallery-header and .about-header instead */
